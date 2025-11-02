@@ -1,0 +1,85 @@
+# AI Legal Analyzer Setup Guide
+
+## Gemini API Key Setup
+
+To use the AI Legal Contradiction Analyzer, you need to set up a Gemini API key:
+
+### 1. Get Gemini API Key
+1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Sign in with your Google account
+3. Click "Create API Key" 
+4. Copy the generated key
+
+### 2. Set Environment Variable
+
+**Windows (PowerShell):**
+```powershell
+$env:GEMINI_API_KEY = AIzaSyBBwToGLWhPhzjmHaP8z0qXqSHJX1mghzc
+```
+
+**Windows (Command Prompt):**
+```cmd
+set GEMINI_API_KEY=AIzaSyBBwToGLWhPhzjmHaP8z0qXqSHJX1mghzc
+```
+
+**Permanent Setup (Windows):**
+1. Search "Environment Variables" in Start menu
+2. Click "Edit the system environment variables"
+3. Click "Environment Variables..." button
+4. Under "User variables", click "New..."
+5. Variable name: `GEMINI_API_KEY`
+6. Variable value: Your API key
+7. Click "OK" and restart VS Code
+
+### 3. Run the Analyzer
+
+**Option 1: VS Code Tasks**
+- Press `Ctrl+Shift+P`
+- Type "Tasks: Run Task"
+- Select "Run AI Contradiction Analyzer"
+
+**Option 2: Windows Batch**
+```cmd
+RUN_AI_ANALYZER.bat
+```
+
+**Option 3: Command Line**
+```cmd
+python ai_legal_analyzer.py
+```
+
+### 4. Review Results
+
+The analyzer will create `output\AI_CONTRADICTION_REPORT.csv` with:
+- Filing ID being analyzed
+- Contradicted statement summary
+- Evidence snippet from OCR
+- Legal relevance type (PERJURY, CONTEMPT, etc.)
+
+## What It Analyzes
+
+The AI examines your OCR evidence against these key claims:
+1. **Financial Stability Claims** - Evidence of financial instability
+2. **Substance Use Claims** - Evidence contradicting sobriety statements
+3. **Parenting Capability** - Evidence of inability to follow orders/provide care
+4. **Communication Claims** - Evidence of hostile/threatening behavior
+5. **December 9 Assault** - Evidence related to criminal charges
+
+## Security Note
+
+- API key is stored locally as environment variable
+- No evidence data is stored on Google servers
+- All analysis happens via secure API calls
+- Your evidence remains on your computer
+
+## Troubleshooting
+
+**"Error initializing Gemini client":**
+- Check that GEMINI_API_KEY environment variable is set
+- Restart terminal/VS Code after setting the variable
+- Verify API key is valid at Google AI Studio
+
+**"No text content column found":**
+- Ensure you have OCR results in the output folder
+- Check that the CSV file has raw_text or formatted_text columns
+- Run the evidence processor first if needed

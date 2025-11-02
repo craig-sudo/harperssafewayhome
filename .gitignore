@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+env/
+*.pyo
+
+# VS Code
+.vscode/
+.history/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project-generated artifacts
+logs/
+output/
+secure_backups/
+duplicate_reports/
+integrity_reports/
+performance_reports/
+court_packages/
+# Ignore all evidence files but keep python helpers in this folder
+custody_screenshots/*
+!custody_screenshots/*.py
+custody_screenshots_organized/
+custody_screenshots_smart_renamed/
+
+# Large/binary evidence files
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tif
+*.tiff
+*.heic
+*.heif
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.wav
+*.mp3
+*.pdf
+*.zip
+*.7z
+*.rar
+*.exe
+*.msi
+*.dll
+
+# CSVs and temp exports
+*.csv
+*.tsv
+*.json
+*.html
+
+# Notebooks
+.ipynb_checkpoints/

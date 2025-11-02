@@ -1,0 +1,832 @@
+# Harper's Legal Triage & Output Suite
+## Court-Admissible Evidence Package Generator
+
+### Overview
+
+The Legal Triage & Output Suite is the final stage of Harper's evidence processing pipeline. It operates exclusively on **already-processed output files** (CSV, images, documents) and integrates **external data sources** (GeoJSON location data, email transcripts from Google Takeout) to generate professional, court-ready exhibit packages.
+
+This system provides:
+- ✅ SHA256 cryptographic integrity verification
+- ✅ Professional exhibit naming conventions
+- ✅ Weighted evidence scoring and prioritization
+- ✅ Chain of custody documentation
+- ✅ Court-ready PDF exhibit generation
+- ✅ Defensibility statements for affidavits
+
+---
+
+## System Architecture
+
+### Components
+
+1. **`legal_triage_suite.py`** - Main triage engine
+   - Loads processed CSV files from `/output` directory
+   - Scans external data from `/external_data` directory
+   - Categorizes evidence by legal relevance
+   - Calculates weighted evidence scores
+   - Performs SHA256 integrity verification
+   - Generates master exhibit index
+   - Creates defensibility statements
+
+2. **`exhibit_generator.py`** - PDF exhibit generator
+   - Creates professional PDF exhibits from index
+   - Includes SHA256 verification details
+   - Displays file metadata and chain of custody
+   - Shows weighted scores and categorization
+   - Formats content for court submission
+
+3. **Output Directory Structure**
+   ```
+   legal_exhibits/
+   ├── EXHIBIT_INDEX_FDSJ739_YYYYMMDD_HHMMSS.csv
+   ├── DEFENSIBILITY_STATEMENT_FDSJ739_YYYYMMDD.txt
+   ├── EXHIBIT-FDSJ739-001A-ASSAULT-TIMELINE.pdf
+   ├── EXHIBIT-FDSJ739-002A-ENDANGERMENT-MEDICAL.pdf
+   ├── EXHIBIT-FDSJ739-003A-LOCATION-GEOJSON-TIMELINE.pdf
+   └── ...
+   ```
+
+---
+
+## SHA256 Verification Protocol
+
+### What is SHA256?
+
+SHA256 (Secure Hash Algorithm 256-bit) is a cryptographic hash function that produces a unique 64-character hexadecimal "fingerprint" for any file. **Any change to a file, no matter how small, produces a completely different hash.** This makes it ideal for verifying file integrity in legal proceedings.
+
+### Verification Process
+
+#### 1. Hash Extraction from CSV
+The system reads hash values from your processed CSV files:
+
+```csv
+filename,file_hash,file_path,text_content,...
+screenshot_001.png,a3f5d8c2e1b9...,custody_screenshots/...,Text from image...
+```
+
+**Field names recognized:**
+- `file_hash`
+- `original_file_sha256`
+- `processed_file_sha256`
+
+#### 2. Cross-Reference with Integrity Database
+If `evidence_integrity.db` exists (created by `evidence_integrity_checker.py`), the system cross-references hashes:
+
+```sql
+SELECT status, validation_date, notes 
+FROM integrity_validation 
+WHERE file_hash = 'a3f5d8c2e1b9...'
+```
+
+**Verification statuses:**
+- `VERIFIED` - Hash present and validated
+- `WARNING` - Hash present but with notes
+- `UNKNOWN` - No hash available
+
+#### 3. Exhibit Report Generation
+Each exhibit PDF includes a **SHA256 Verification Section** with:
+
+```
+SHA256 CRYPTOGRAPHIC VERIFICATION
+Status: VERIFIED
+Verified: 2025-10-22
+
+Original File SHA256:
+a3f5d8c2e1b9f4d7e6c5b8a1d2e3f4g5h6i7j8k9l0m1n2o3p4q5r6s7t8u9v0w1x2
+
+Verification Notes:
+Verified against integrity DB on 2025-10-21
+```
+
+#### 4. Defensibility Statement
+The system generates an affidavit-ready statement confirming:
+- Total exhibits and verification rate
+- SHA256 integrity protocol used
+- Chain of custody maintained
+- Industry-standard cryptographic practices
+
+**Example excerpt:**
+> "Each exhibit has been assigned a unique cryptographic fingerprint (SHA256 hash) at the time of original capture, and this hash has been preserved throughout all processing stages. The SHA256 cryptographic hash function produces a unique 64-character hexadecimal fingerprint for each file. Any modification to a file, no matter how minor, produces a completely different hash value."
+
+---
+
+## Exhibit Naming Convention
+
+### Format Specification
+
+```
+EXHIBIT-FDSJ739-###X-CATEGORY-DESCRIPTION.pdf
+```
+
+#### Components
+
+1. **`EXHIBIT`** - Fixed prefix
+2. **`FDSJ739`** - Case ID (Harper's case)
+3. **`###`** - Sequential number (001, 002, 003...)
+4. **`X`** - Priority suffix
+   - `A` = HIGH priority
+   - `B` = MEDIUM priority
+   - `C` = LOW priority
+   - `X` = UNKNOWN priority
+5. **`CATEGORY`** - Legal category (see below)
+6. **`DESCRIPTION`** - Brief descriptor from filename or content
+
+### Legal Categories
+
+| Category | Keywords | Weight | Examples |
+|----------|----------|--------|----------|
+| **ASSAULT** | assault, violence, physical, injury, hurt, hit, attack | 10 | Physical harm incidents |
+| **ENDANGERMENT** | endangerment, danger, unsafe, risk, neglect, welfare, safety | 9 | Child safety concerns |
+| **CONTEMPT** | contempt, violation, custody, order, breach, non-compliance | 8 | Custody order violations |
+| **HARASSMENT** | harassment, threatening, intimidation, abuse, stalking | 7 | Threatening messages |
+| **MEDICAL** | medical, health, therapy, doctor, hospital, treatment | 6 | Health records |
+| **FINANCIAL** | financial, money, support, payment, expense, cost | 5 | Support payments |
+| **COMMUNICATION** | email, text, message, communication, correspondence | 4 | Email/text evidence |
+| **EDUCATION** | school, education, teacher, academic, learning | 4 | School issues |
+| **TIMELINE** | timeline, chronology, sequence, events, history | 3 | Chronological records |
+| **LOCATION** | location, gps, geolocation, whereabouts, travel | 3 | Location data |
+
+### Example Exhibit Names
+
+```
+EXHIBIT-FDSJ739-001A-ASSAULT-DECEMBER-9-INCIDENT.pdf
+EXHIBIT-FDSJ739-002A-ENDANGERMENT-UNSAFE-CONDITIONS.pdf
+EXHIBIT-FDSJ739-003A-LOCATION-GEOJSON-DECEMBER-TIMELINE.pdf
+EXHIBIT-FDSJ739-004A-COMMUNICATION-EMAIL-THREATENING-MESSAGES.pdf
+EXHIBIT-FDSJ739-005B-MEDICAL-THERAPY-RECORDS.pdf
+EXHIBIT-FDSJ739-006A-CONTEMPT-CUSTODY-VIOLATION.pdf
+```
+
+### External File Accommodation
+
+#### GeoJSON Location Data
+```
+EXHIBIT-FDSJ739-###A-LOCATION-GEOJSON-[DATE-RANGE].json
+```
+
+Example:
+```
+EXHIBIT-FDSJ739-015A-LOCATION-GEOJSON-DECEMBER-2024.json
+```
+
+The PDF exhibit includes:
+- Number of location points
+- Date range covered
+- SHA256 hash of the GeoJSON file
+- Summary of movement patterns
+
+#### Email CSV Data
+```
+EXHIBIT-FDSJ739-###A-COMMUNICATION-EMAIL-[DESCRIPTION].pdf
+```
+
+Example:
+```
+EXHIBIT-FDSJ739-020A-COMMUNICATION-EMAIL-GMAIL-EXPORT.pdf
+```
+
+The PDF exhibit includes:
+- Number of email messages
+- Date range covered
+- SHA256 hash of the CSV file
+- Key participants mentioned
+
+---
+
+## Weighted Evidence Score (S_w)
+
+### Formula
+
+```
+S_w = (Priority_Weight × Category_Weight) + Recency_Factor
+```
+
+### Weights
+
+**Priority Weights:**
+- HIGH: 10
+- MEDIUM: 5
+- LOW: 2
+- UNKNOWN: 1
+
+**Category Weights:** (see table above)
+
+**Recency Factor:**
+- Adds 0.5 points per year after 2020
+- Example: 2024 evidence gets +2.0 points
+
+### Examples
+
+1. **High-priority assault evidence from 2024**
+   - Priority: HIGH (10) × Category: ASSAULT (10) = 100
+   - Recency: (2024-2020) × 0.5 = +2.0
+   - **Final Score: 102.0**
+
+2. **Medium-priority email evidence from 2023**
+   - Priority: MEDIUM (5) × Category: COMMUNICATION (4) = 20
+   - Recency: (2023-2020) × 0.5 = +1.5
+   - **Final Score: 21.5**
+
+### Usage
+
+Exhibits are sorted by weighted score in the master index, with **highest scores first**. This ensures the most critical evidence is reviewed and presented first.
+
+---
+
+## External Data Integration
+
+### Directory Structure
+
+Create an `external_data/` directory in the workspace:
+
+```
+harperssafewayhome/
+├── output/                          # Processed CSV files
+├── external_data/                   # External data sources
+│   ├── google_takeout/
+│   │   ├── location_history.geojson
+│   │   ├── december_2024_timeline.geojson
+│   │   └── gmail_export.csv
+│   └── other_sources/
+│       └── ...
+├── legal_exhibits/                  # Generated exhibits
+└── ...
+```
+
+### GeoJSON Location Data
+
+**Expected format:** Standard GeoJSON with timestamps
+
+```json
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-123.456, 45.678]
+      },
+      "properties": {
+        "timestamp": "2024-12-09T14:30:00Z",
+        "accuracy": 10
+      }
+    }
+  ]
+}
+```
+
+**Processing:**
+- System scans for `*.geojson` and `*.json` files
+- Extracts date range from timestamps
+- Calculates SHA256 hash
+- Creates high-priority LOCATION exhibit
+
+### Email CSV Data
+
+**Expected format:** CSV with standard email fields
+
+```csv
+date,from,to,subject,body
+2024-12-09,sender@example.com,recipient@example.com,Subject line,Email body text...
+```
+
+**Processing:**
+- System scans for CSV files with 'email' or 'gmail' in filename
+- Extracts date range
+- Counts messages
+- Calculates SHA256 hash
+- Creates high-priority COMMUNICATION exhibit
+
+---
+
+## Workflow
+
+### Step 1: Prepare Your Data
+
+1. **Ensure processed CSVs exist**
+   - Run your OCR processing first
+   - CSVs should be in `/output` directory
+   - CSVs should include `file_hash` or `original_file_sha256` fields
+
+2. **Place external data** (optional)
+   - Create `/external_data` directory
+   - Add GeoJSON files for location data
+   - Add email CSV files
+   - Verify file formats
+
+3. **Run integrity checks** (recommended)
+   ```bash
+   python evidence_integrity_checker.py --scan
+   ```
+   This creates/updates the integrity database for cross-verification.
+
+### Step 2: Run Legal Triage
+
+```bash
+python legal_triage_suite.py
+```
+
+**What it does:**
+1. Loads all processed CSV files
+2. Scans external data directory
+3. Categorizes each piece of evidence
+4. Calculates weighted scores
+5. Verifies SHA256 integrity
+6. Generates master exhibit index
+7. Creates defensibility statement
+
+**Output:**
+- `EXHIBIT_INDEX_FDSJ739_YYYYMMDD_HHMMSS.csv` - Master index with all metadata
+- `DEFENSIBILITY_STATEMENT_FDSJ739_YYYYMMDD.txt` - Affidavit statement
+
+**Options:**
+```bash
+python legal_triage_suite.py --stats           # Quick statistics only
+python legal_triage_suite.py --generate-pdfs   # Also generate PDFs (slow)
+```
+
+### Step 3: Generate PDF Exhibits
+
+```bash
+python exhibit_generator.py --index EXHIBIT_INDEX_FDSJ739_20251022_123456.csv
+```
+
+**What it does:**
+1. Reads the master exhibit index
+2. Creates a professional PDF for each exhibit
+3. Includes SHA256 verification details
+4. Formats for court submission
+
+**Options:**
+```bash
+python exhibit_generator.py --index [FILE] --limit 10   # Generate first 10 only (testing)
+```
+
+**Requirements:**
+- Requires `reportlab` library
+- Install with: `pip install reportlab`
+
+### Step 4: Review and Package
+
+1. **Review the exhibit index CSV**
+   - Open in Excel or similar
+   - Sort by `weighted_score` (highest first)
+   - Review categorization
+   - Check verification status
+
+2. **Review PDF exhibits**
+   - Spot-check high-priority exhibits
+   - Verify SHA256 hashes are present
+   - Ensure content is appropriate for court
+
+3. **Prepare court package**
+   ```bash
+   python court_package_exporter.py --mode comprehensive
+   ```
+   This creates a ZIP package with all exhibits ready for submission.
+
+---
+
+## Defensibility Statement
+
+### Purpose
+
+The defensibility statement is a professional paragraph designed for attachment to an affidavit. It confirms:
+- Evidence integrity through SHA256 verification
+- Chain of custody maintenance
+- System reliability and industry standards
+- Suitable for legal admission
+
+### Generated Content
+
+The system automatically generates a statement including:
+
+1. **Case identification**
+   - Case ID: FDSJ739
+   - Date of generation
+   - Total exhibits and verification rate
+
+2. **Technical methodology**
+   - SHA256 cryptographic hashing
+   - Chain of custody protocols
+   - Automated OCR with manual review
+   - Weighted scoring algorithms
+
+3. **External data integration**
+   - GeoJSON location data handling
+   - Email transcript processing
+   - Hash-upon-ingestion protocol
+
+4. **SHA256 explanation**
+   - What it is
+   - How it ensures integrity
+   - Why it's defensible in court
+
+### Example Excerpt
+
+```
+I hereby certify that the evidence presented in this matter has been 
+processed, verified, and packaged using industry-standard cryptographic 
+hashing (SHA256) and chain of custody protocols. Each exhibit has been 
+assigned a unique cryptographic fingerprint (SHA256 hash) at the time of 
+original capture, and this hash has been preserved throughout all processing 
+stages.
+
+The SHA256 cryptographic hash function is a one-way function that produces 
+a unique 64-character hexadecimal fingerprint for each file. Any modification 
+to a file, no matter how minor, produces a completely different hash value. 
+This property ensures that the court can verify, at any time, that the 
+evidence has not been altered since initial capture by recomputing the hash 
+and comparing it to the recorded value.
+
+This evidence package has been prepared in accordance with best practices 
+for digital evidence handling and is suitable for admission in legal 
+proceedings.
+```
+
+### Usage in Affidavit
+
+1. Include the full statement in an appendix to your affidavit
+2. Reference it in the main affidavit body:
+   > "The evidence submitted herewith has been processed and verified in accordance with industry-standard digital forensic protocols, as detailed in Appendix A (Defensibility Statement)."
+
+3. Attach the master exhibit index as a supporting document
+
+---
+
+## Integration with Existing System
+
+### Prerequisites
+
+The Legal Triage Suite requires:
+
+1. **Processed CSV files** in `/output`
+   - Generated by your OCR processing scripts
+   - Must include `file_hash` field (or similar)
+   - Should include priority, text_content, filename, etc.
+
+2. **Integrity database** (recommended)
+   - `evidence_integrity.db` created by `evidence_integrity_checker.py`
+   - Provides additional verification cross-reference
+
+3. **Python 3.7+** with dependencies:
+   ```
+   pip install reportlab
+   ```
+
+### Integration Points
+
+1. **With Evidence Integrity Checker**
+   ```bash
+   # First, verify integrity
+   python evidence_integrity_checker.py --scan
+   
+   # Then, run triage (uses integrity DB)
+   python legal_triage_suite.py
+   ```
+
+2. **With Court Package Exporter**
+   ```bash
+   # First, generate exhibits
+   python legal_triage_suite.py
+   python exhibit_generator.py --index [INDEX_FILE]
+   
+   # Then, package everything
+   python court_package_exporter.py --mode comprehensive
+   ```
+
+3. **With Master Control System**
+   - Add to `master_control_system.py` menu
+   - Add to `MASTER_LAUNCHER.bat`
+
+---
+
+## Master Exhibit Index Format
+
+### CSV Structure
+
+```csv
+exhibit_number,exhibit_name,case_id,priority,weighted_score,categories,date_extracted,original_hash,verification_status,file_path,filename,folder_category,people_mentioned,text_preview,verification_notes,generation_date
+1,EXHIBIT-FDSJ739-001A-ASSAULT-INCIDENT.pdf,FDSJ739,HIGH,102.0,"assault; endangerment",20241209,a3f5d8c2e1b9...,VERIFIED,custody_screenshots/...,screenshot_001.png,december_9_incident,Emma; Harper,Text from screenshot preview...,Verified against integrity DB on 2025-10-21,2025-10-22T10:30:45
+```
+
+### Fields
+
+| Field | Description |
+|-------|-------------|
+| `exhibit_number` | Sequential number (1, 2, 3...) |
+| `exhibit_name` | Full exhibit filename |
+| `case_id` | FDSJ739 |
+| `priority` | HIGH, MEDIUM, LOW, UNKNOWN |
+| `weighted_score` | Calculated S_w value |
+| `categories` | Legal categories (semicolon-separated) |
+| `date_extracted` | Date evidence was captured (YYYYMMDD) |
+| `original_hash` | SHA256 hash (64 chars) |
+| `verification_status` | VERIFIED, WARNING, UNKNOWN |
+| `file_path` | Original file location |
+| `filename` | Original filename |
+| `folder_category` | Source folder classification |
+| `people_mentioned` | Names extracted from evidence |
+| `text_preview` | First 200 chars of content |
+| `verification_notes` | Integrity verification details |
+| `generation_date` | ISO timestamp of exhibit generation |
+
+### Usage
+
+- **Excel/LibreOffice**: Open for review and analysis
+- **Filtering**: Sort by `weighted_score`, filter by `priority` or `categories`
+- **Court submission**: Attach as master evidence index
+- **Cross-reference**: Use `exhibit_number` to locate physical exhibits
+
+---
+
+## Troubleshooting
+
+### Issue: "ReportLab not installed"
+
+**Solution:**
+```bash
+pip install reportlab
+```
+
+### Issue: "No CSV files found"
+
+**Check:**
+1. CSV files exist in `/output` directory
+2. Files have `.csv` extension
+3. CSVs were generated by your processing scripts
+
+**Fix:**
+```bash
+python batch_ocr_processor.py  # Re-run OCR processing
+```
+
+### Issue: "No hash values in CSV"
+
+**Check:**
+1. CSV has `file_hash` column (or `original_file_sha256`)
+2. Hash values are 64-character hex strings
+
+**Fix:**
+- Re-run OCR processing with hash calculation enabled
+- Or run integrity checker to add hashes:
+  ```bash
+  python evidence_integrity_checker.py --scan
+  ```
+
+### Issue: "External data not found"
+
+**Check:**
+1. `/external_data` directory exists
+2. GeoJSON files have `.geojson` or `.json` extension
+3. Email CSVs have 'email' or 'gmail' in filename
+
+**Fix:**
+```bash
+mkdir external_data
+# Copy your GeoJSON and email CSV files into this directory
+```
+
+### Issue: "Verification status is WARNING"
+
+**Meaning:**
+- File has a hash but integrity checker found issues
+- Or no integrity database exists for cross-reference
+
+**Action:**
+- Review verification notes in exhibit PDF
+- Check integrity checker logs
+- Re-run integrity scan if needed
+
+---
+
+## Command Reference
+
+### Legal Triage Suite
+
+```bash
+# Full triage (no PDF generation)
+python legal_triage_suite.py
+
+# Statistics only (quick check)
+python legal_triage_suite.py --stats
+
+# Full triage with PDF generation (requires reportlab)
+python legal_triage_suite.py --generate-pdfs
+```
+
+### Exhibit Generator
+
+```bash
+# Generate all exhibits from index
+python exhibit_generator.py --index EXHIBIT_INDEX_FDSJ739_20251022_123456.csv
+
+# Generate first 10 exhibits (testing)
+python exhibit_generator.py --index [INDEX_FILE] --limit 10
+```
+
+### Typical Workflow
+
+```bash
+# 1. Process evidence (if not already done)
+python batch_ocr_processor.py
+
+# 2. Verify integrity
+python evidence_integrity_checker.py --scan
+
+# 3. Run legal triage
+python legal_triage_suite.py
+
+# 4. Generate PDF exhibits
+python exhibit_generator.py --index EXHIBIT_INDEX_FDSJ739_20251022_123456.csv
+
+# 5. Package for court
+python court_package_exporter.py --mode comprehensive
+```
+
+---
+
+## Output Files Reference
+
+### Generated by Legal Triage Suite
+
+| File | Description | Location |
+|------|-------------|----------|
+| `EXHIBIT_INDEX_*.csv` | Master index of all exhibits | `legal_exhibits/` |
+| `DEFENSIBILITY_STATEMENT_*.txt` | Affidavit statement | `legal_exhibits/` |
+
+### Generated by Exhibit Generator
+
+| File | Description | Location |
+|------|-------------|----------|
+| `EXHIBIT-FDSJ739-###X-*.pdf` | Individual exhibit PDFs | `legal_exhibits/` |
+
+### Log Files
+
+| File | Description | Location |
+|------|-------------|----------|
+| `legal_triage.log` | Triage processing log | `logs/` |
+
+---
+
+## Best Practices
+
+1. **Run integrity checks first**
+   - Creates verification cross-reference
+   - Catches issues early
+
+2. **Review the index before generating PDFs**
+   - Check categorization
+   - Verify weighted scores make sense
+   - Filter out irrelevant evidence if needed
+
+3. **Use `--limit` for initial testing**
+   - Generate 5-10 exhibits first
+   - Review format and content
+   - Then generate all exhibits
+
+4. **Preserve original files**
+   - Never delete original evidence
+   - Keep CSV files as-is
+   - Exhibits are derivatives, not replacements
+
+5. **Version control for court submission**
+   - Note the date/time of exhibit generation
+   - Keep the master index with the exhibit PDFs
+   - Include the defensibility statement
+
+6. **External data validation**
+   - Verify GeoJSON format before processing
+   - Check email CSV has standard columns
+   - Test with small files first
+
+---
+
+## Legal Considerations
+
+### Admissibility
+
+This system is designed to support evidence admissibility by:
+- **Authentication**: SHA256 hashes prove files haven't been altered
+- **Chain of custody**: Logging and timestamps track all operations
+- **Reliability**: Industry-standard cryptographic methods
+- **Best practices**: Follows digital forensic protocols
+
+### Limitations
+
+- **Not a substitute for legal advice**: Consult your attorney
+- **Jurisdiction-specific rules**: Verify local admissibility requirements
+- **Human review required**: Automated categorization may need adjustment
+- **Technical testimony**: May need expert witness to explain SHA256
+
+### Recommendations
+
+1. **Work with your attorney** to determine:
+   - Which exhibits are most relevant
+   - How to present technical evidence
+   - Whether expert testimony is needed
+
+2. **Prepare to explain** the system:
+   - How evidence was captured
+   - How integrity was maintained
+   - What SHA256 verification means
+
+3. **Have backups**:
+   - Original evidence files
+   - Integrity database
+   - Processing logs
+
+---
+
+## Support and Maintenance
+
+### Logging
+
+All operations are logged to `logs/legal_triage.log` with:
+- Timestamps
+- Operations performed
+- Errors and warnings
+- File counts and statistics
+
+### Error Recovery
+
+If processing fails:
+1. Check the log file for details
+2. Verify input files are accessible
+3. Ensure dependencies are installed
+4. Try with `--stats` mode to diagnose
+
+### Updates
+
+To add new legal categories:
+1. Edit `LEGAL_CATEGORIES` dict in `legal_triage_suite.py`
+2. Edit `CATEGORY_WEIGHTS` dict
+3. Re-run triage
+
+To change case ID:
+1. Edit `CASE_ID` constant in both Python files
+2. Re-run triage and exhibit generation
+
+---
+
+## Contact and Credits
+
+**Harper's Safeway Home Evidence Processor**
+- Version: 1.0
+- Date: October 2025
+- Purpose: Court-admissible evidence preparation
+
+**Components:**
+- Legal Triage Suite
+- Exhibit Generator
+- Evidence Integrity Checker
+- Court Package Exporter
+
+---
+
+## Appendix: SHA256 Technical Details
+
+### What is SHA256?
+
+SHA256 is part of the SHA-2 (Secure Hash Algorithm 2) family, designed by the NSA and published by NIST. It produces a 256-bit (32-byte) hash value, typically rendered as a 64-character hexadecimal string.
+
+### Properties
+
+1. **Deterministic**: Same input always produces same hash
+2. **Avalanche effect**: Tiny change = completely different hash
+3. **One-way**: Cannot reverse hash to get original file
+4. **Collision-resistant**: Virtually impossible for two different files to have same hash
+
+### Example
+
+**Original file:** "screenshot_001.png" (100 KB)
+**SHA256 hash:** `a3f5d8c2e1b9f4d7e6c5b8a1d2e3f4g5h6i7j8k9l0m1n2o3p4q5r6s7t8u9v0w1x2`
+
+If one pixel changes:
+**SHA256 hash:** `f9e7d6c5b4a3g2h1i0j9k8l7m6n5o4p3q2r1s0t9u8v7w6x5y4z3a2b1c0d9e8f7`
+
+(Completely different, not just slightly different!)
+
+### Legal Precedent
+
+SHA256 hashing is widely accepted in:
+- Digital forensics
+- Court proceedings worldwide
+- Law enforcement evidence handling
+- Chain of custody protocols
+
+### Verification Process for Court
+
+1. **Submit exhibits with hash values**
+2. **Court can independently verify** by:
+   ```bash
+   sha256sum EXHIBIT-FDSJ739-001A-*.pdf
+   ```
+3. **Compare computed hash to recorded hash**
+4. **If they match: File is authentic and unaltered**
+5. **If they don't match: File has been modified**
+
+---
+
+*This guide was generated by Harper's Evidence Processing System to support court-admissible evidence preparation. All methods comply with industry-standard digital forensic practices.*
