@@ -53,7 +53,7 @@ def generate_exhibit_book():
                     'category': current_category,
                     'folder': current_folder,
                     'filename': filename,
-                    'path': os.path.join(current_folder, filename).replace('\', '/'),
+                    'path': os.path.join(current_folder, filename).replace('\\', '/'),
                     'context': context,
                     'from': from_who,
                     'score': score
@@ -192,10 +192,10 @@ def generate_exhibit_book():
     '''
 
     # Write the HTML file
-    with open('exhibit_book.html', 'w', encoding='utf-8') as f:
+    with open('public/index.html', 'w', encoding='utf-8') as f:
         f.write(html)
     
-    print("Successfully generated exhibit_book.html")
+    print("Successfully generated public/index.html")
 
 if __name__ == "__main__":
     generate_exhibit_book()
