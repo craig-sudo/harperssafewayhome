@@ -30,7 +30,7 @@ def load_exhibit_data():
 
         category_match = re.match(r'^(.* EVIDENCE):$', line, re.IGNORECASE)
         if category_match:
-            category_title = category_match.group(1).title().replace(''S', 's')
+            category_title = category_match.group(1).title().replace("'S", "'s")
             current_category = category_title
             continue
 
