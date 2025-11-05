@@ -29,7 +29,7 @@
       enable = true;
       previews = {
         web = {
-          command = ["streamlit", "run", "app.py", "--server.port", "$PORT", "--server.address", "0.0.0.0", "--server.enableCORS", "false"];
+          command = ["streamlit" "run" "app.py", "--server.port", "$PORT", "--server.address", "0.0.0.0", "--server.enableCORS", "false"];
           manager = "web";
         };
       };

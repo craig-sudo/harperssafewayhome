@@ -8,21 +8,29 @@ import firebase_admin
 from firebase_admin import credentials, firestore, storage
 import os
 import tempfile
+import json
 
 # --- Firebase Initialization (Singleton Pattern for Streamlit) ---
 # This pattern prevents re-initializing the app on every script rerun.
 if not firebase_admin._apps:
-    # For production, use st.secrets to securely load your Firebase service account key.
-    # Example:
-    # cred_dict = st.secrets["firebase_service_account"]
-    # cred = credentials.Certificate(cred_dict)
-    # firebase_admin.initialize_app(cred, {'storageBucket': 'your-bucket-name.appspot.com'})
-
-    # Assumes Application Default Credentials (ADC) are configured.
-    firebase_admin.initialize_app()
+    # --- TEMPORARY SIMULATION MODE ---
+    # For now, we will only initialize Firestore to avoid Storage billing requirements.
+    # The `storage_bucket` parts are commented out.
+    if "FIREBASE_SERVICE_ACCOUNT_KEY" in st.secrets:
+        cred_dict = st.secrets["FIREBASE_SERVICE_ACCOUNT_KEY"]
+        cred = credentials.Certificate(cred_dict)
+        firebase_admin.initialize_app(cred) # Removed storageBucket init
+    elif "FIREBASE_SERVICE_ACCOUNT_KEY" in os.environ:
+        cred_str = os.environ.get("FIREBASE_SERVICE_ACCOUNT_KEY")
+        cred_dict = json.loads(cred_str)
+        cred = credentials.Certificate(cred_dict)
+        firebase_admin.initialize_app(cred) # Removed storageBucket init
+    else:
+        firebase_admin.initialize_app()
 
 db = firestore.client()
-bucket = storage.bucket() # Initialize the default storage bucket
+# bucket = storage.bucket() # --- TEMPORARILY DISABLED ---
+
 
 # --- Branding and Setup ---
 st.set_page_config(
@@ -37,7 +45,6 @@ st.markdown("---")
 
 # --- BACKEND LOGIC INTEGRATION (FROM SERVER-SIDE CODE) ---
 
-# 1. Hashing Logic - Adapted for Server-Side Processing
 def calculate_sha256_of_uploaded_file(uploaded_file):
     """
     Saves the uploaded file to a temp location, then calculates its SHA-256 hash
@@ -61,51 +68,46 @@ def calculate_sha256_of_uploaded_file(uploaded_file):
     return calculated_hash
 
 
-# 2. Firebase Storage Upload & Metadata Logging (Full Integration)
 def process_and_log_evidence(uploaded_file, file_hash):
     """
-    Uploads file to Firebase Storage and logs metadata to Firestore,
-    integrating the provided server-side upload and logging snippets.
+    SIMULATION MODE: Skips actual upload but logs metadata to Firestore.
     """
     case_id = st.session_state.case_id
 
     if not uploaded_file:
         return "Error: No file provided.", None
     
-    temp_dir = tempfile.gettempdir()
-    temp_file_path = os.path.join(temp_dir, uploaded_file.name + "_upload_" + str(time.time()))
-    with open(temp_file_path, "wb") as f:
-        f.write(uploaded_file.getbuffer())
+    # Temp file is still needed for hashing, but not for upload in this mode.
+    # We can remove the second temp file creation.
 
     try:
-        # --- UPLOAD SNIPPET INTEGRATION ---
-        destination_blob_name = f"evidence/{case_id}/raw/{file_hash}-{uploaded_file.name}"
-        blob = bucket.blob(destination_blob_name)        
-        blob.upload_from_filename(temp_file_path)
-        storage_path = destination_blob_name
+        # --- UPLOAD SIMULATION ---
+        # The actual upload is commented out. We create a placeholder path.
+        storage_path = f"simulated/evidence/{case_id}/raw/{file_hash}-{uploaded_file.name}"
+        # destination_blob_name = f"evidence/{case_id}/raw/{file_hash}-{uploaded_file.name}"
+        # blob = bucket.blob(destination_blob_name)        
+        # blob.upload_from_filename(temp_file_path)
         
-        # --- FIRESTORE LOGGING SNIPPET INTEGRATION ---
+        # --- FIRESTORE LOGGING (Still active) ---
         doc_ref = db.collection('cases').document(case_id).collection('evidence').document(file_hash)
         
         evidence_data = {
             "file_name": uploaded_file.name,
             "file_size_bytes": uploaded_file.size,
             "sha256_hash": file_hash,
-            "storage_path": storage_path,
+            "storage_path": storage_path, # Log the simulated path
             "timestamp": firestore.SERVER_TIMESTAMP,
             "verified": True,
-            "status": "SHA-256 Verified (Upload Complete)"
+            "status": "SHA-256 Verified (Local Simulation - NO UPLOAD)"
         }
         
         doc_ref.set(evidence_data, merge=True)
         
-        return f"Success: Evidence '{uploaded_file.name}' verified and secured.", evidence_data
+        return f"Success (Simulation): '{uploaded_file.name}' hash verified and logged.", evidence_data
 
     except Exception as e:
-        return f"A critical Firebase error occurred for {uploaded_file.name}: {e}", None
-    finally:
-        if os.path.exists(temp_file_path):
-            os.remove(temp_file_path)
+        return f"A critical error occurred during simulation: {e}", None
+    # No 'finally' needed to remove temp file as it's handled in the hash function
 
 
 # --- UI FLOW & REFINED OUTPUT ---
@@ -124,7 +126,8 @@ def main_app():
 
     if uploaded_files:
         if st.button("Process & Secure Evidence", type="primary"):
-            with st.spinner("Calculating Integrity Fingerprints and Securing to Firebase..."):
+            st.warning("Running in Simulation Mode: Files are NOT being uploaded to cloud storage.", icon="⚠️")
+            with st.spinner("Calculating Integrity Fingerprints and Logging Metadata..."):
                 results = []
                 for file in uploaded_files:
                     try:
@@ -133,7 +136,7 @@ def main_app():
                         
                         results.append({
                             "File": file.name,
-                            "Status": status_message.split(":")[0],
+                            "Status": "Success (Simulation)",
                             "Message": status_message,
                             "Data": data
                         })
@@ -145,13 +148,12 @@ def main_app():
                             "Data": None
                         })
 
-            st.success("Evidence Processing Complete!")
+            st.success("Evidence Processing Simulation Complete!")
             
-            # --- REFINED EVIDENCE LOG OUTPUT ---
             st.markdown("### 📋 Evidence Processing Log")
             for result in results:
-                status_icon = "✅" if result["Status"] == "Success" else "❌"
-                with st.expander(f'{status_icon} **{result["File"]}** - Status: {result["Status"]}', expanded=result["Status"] != "Success"):
+                status_icon = "✅" if "Success" in result["Status"] else "❌"
+                with st.expander(f'{status_icon} **{result["File"]}** - Status: {result["Status"]}', expanded= "Success" not in result["Status"]):
                     st.markdown(f"**Message:** `{result['Message']}`")
                     if result["Data"]:
                         st.json({
