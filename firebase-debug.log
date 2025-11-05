@@ -264,3 +264,171 @@
 [error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
 [debug] [2025-11-05T22:30:51.299Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
 [debug] [2025-11-05T22:30:51.299Z] > authorizing via signed-in user (craig@paulroofs.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-11-05T22:40:27.941Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-05T22:40:27.947Z] > authorizing via signed-in user (craig@paulroofs.com)
+[debug] [2025-11-05T22:40:27.963Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:27.964Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:27.969Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:27.976Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:27.978Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:27.979Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:27.996Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:27.996Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:28.000Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:28.000Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:28.005Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firestore.googleapis.com [none]
+[debug] [2025-11-05T22:40:28.005Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firestore.googleapis.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:40:28.013Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-11-05T22:40:28.013Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:40:28.018Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-11-05T22:40:28.018Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:40:28.023Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-11-05T22:40:28.023Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:40:28.028Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseio.com [none]
+[debug] [2025-11-05T22:40:28.028Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseio.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-11-05T22:40:28.054Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-05T22:40:28.055Z] > authorizing via signed-in user (craig@paulroofs.com)
+[debug] [2025-11-05T22:40:28.056Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:28.057Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:28.057Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:28.057Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:28.060Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:28.060Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:28.065Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:28.065Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:28.068Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:28.068Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:40:28.068Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firestore.googleapis.com [none]
+[debug] [2025-11-05T22:40:28.068Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firestore.googleapis.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:40:28.073Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-11-05T22:40:28.073Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:40:28.076Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-11-05T22:40:28.076Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:40:28.080Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-11-05T22:40:28.080Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:40:28.083Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseio.com [none]
+[debug] [2025-11-05T22:40:28.083Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseio.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:40:28.360Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseio.com 403
+[debug] [2025-11-05T22:40:28.360Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseio.com [omitted]
+[debug] [2025-11-05T22:40:28.428Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseio.com 403
+[debug] [2025-11-05T22:40:28.429Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseio.com [omitted]
+[debug] [2025-11-05T22:40:28.452Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-11-05T22:40:28.452Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-11-05T22:40:28.475Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-11-05T22:40:28.475Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-11-05T22:40:28.480Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firestore.googleapis.com 200
+[debug] [2025-11-05T22:40:28.480Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firestore.googleapis.com [omitted]
+[debug] [2025-11-05T22:40:28.487Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/cloudfunctions.googleapis.com 200
+[debug] [2025-11-05T22:40:28.487Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-11-05T22:40:28.498Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-11-05T22:40:28.498Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-11-05T22:40:28.509Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firestore.googleapis.com 200
+[debug] [2025-11-05T22:40:28.509Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firestore.googleapis.com [omitted]
+[debug] [2025-11-05T22:40:28.527Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-11-05T22:40:28.530Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-11-05T22:40:28.539Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/cloudfunctions.googleapis.com 200
+[debug] [2025-11-05T22:40:28.540Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/cloudfunctions.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-11-05T22:40:28.614Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-05T22:40:28.614Z] > authorizing via signed-in user (craig@paulroofs.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-11-05T22:40:28.618Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-05T22:40:28.621Z] > authorizing via signed-in user (craig@paulroofs.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-11-05T22:41:04.504Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-05T22:41:04.507Z] > authorizing via signed-in user (craig@paulroofs.com)
+[debug] [2025-11-05T22:41:04.530Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.530Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.534Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.537Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.540Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.541Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.568Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.570Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.571Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.571Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.579Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firestore.googleapis.com [none]
+[debug] [2025-11-05T22:41:04.580Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firestore.googleapis.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:41:04.591Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-11-05T22:41:04.591Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:41:04.603Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-11-05T22:41:04.603Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:41:04.610Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-11-05T22:41:04.610Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:41:04.615Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseio.com [none]
+[debug] [2025-11-05T22:41:04.615Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseio.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-11-05T22:41:04.638Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-05T22:41:04.639Z] > authorizing via signed-in user (craig@paulroofs.com)
+[debug] [2025-11-05T22:41:04.641Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.642Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.643Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.643Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.643Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.643Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.650Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.650Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.651Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.651Z] Checked if tokens are valid: true, expires at: 1762385449948
+[debug] [2025-11-05T22:41:04.656Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firestore.googleapis.com [none]
+[debug] [2025-11-05T22:41:04.656Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firestore.googleapis.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:41:04.660Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-11-05T22:41:04.660Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:41:04.667Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-11-05T22:41:04.668Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:41:04.679Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-11-05T22:41:04.679Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:41:04.694Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseio.com [none]
+[debug] [2025-11-05T22:41:04.694Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseio.com x-goog-quota-user=projects/harperssafewayhome-34882-264d6
+[debug] [2025-11-05T22:41:04.985Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseio.com 403
+[debug] [2025-11-05T22:41:04.985Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseio.com [omitted]
+[debug] [2025-11-05T22:41:05.014Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseio.com 403
+[debug] [2025-11-05T22:41:05.014Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseio.com [omitted]
+[debug] [2025-11-05T22:41:05.043Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-11-05T22:41:05.044Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-11-05T22:41:05.087Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-11-05T22:41:05.088Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-11-05T22:41:05.102Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/cloudfunctions.googleapis.com 200
+[debug] [2025-11-05T22:41:05.103Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-11-05T22:41:05.122Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firestore.googleapis.com 200
+[debug] [2025-11-05T22:41:05.122Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firestore.googleapis.com [omitted]
+[debug] [2025-11-05T22:41:05.125Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-11-05T22:41:05.126Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-11-05T22:41:05.133Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/cloudfunctions.googleapis.com 200
+[debug] [2025-11-05T22:41:05.134Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-11-05T22:41:05.139Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firestore.googleapis.com 200
+[debug] [2025-11-05T22:41:05.139Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firestore.googleapis.com [omitted]
+[debug] [2025-11-05T22:41:05.155Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-11-05T22:41:05.155Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/harperssafewayhome-34882-264d6/services/firebaseapphosting.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-11-05T22:41:05.247Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-05T22:41:05.247Z] > authorizing via signed-in user (craig@paulroofs.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-11-05T22:41:05.257Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-05T22:41:05.258Z] > authorizing via signed-in user (craig@paulroofs.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-11-05T22:41:05.355Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-05T22:41:05.356Z] > authorizing via signed-in user (craig@paulroofs.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-11-05T22:41:05.366Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-05T22:41:05.366Z] > authorizing via signed-in user (craig@paulroofs.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-11-05T22:41:05.404Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-05T22:41:05.404Z] > authorizing via signed-in user (craig@paulroofs.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-11-05T22:41:05.412Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-05T22:41:05.412Z] > authorizing via signed-in user (craig@paulroofs.com)

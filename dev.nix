@@ -10,7 +10,6 @@ pkgs.mkShell {
     (python3.withPackages (ps: with ps; [
       # Packages from requirements.txt
       streamlit
-      firebase-admin
       pytesseract
       pillow
       pandas
