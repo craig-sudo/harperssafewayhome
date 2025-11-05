@@ -1,3 +1,4 @@
+nix
 { pkgs, ... }: {
   # Which nixpkgs channel to use.
   channel = "stable-24.05"; 
@@ -50,32 +51,27 @@
     ];
     
     # Enable previews
-    previews = {
+    previews = { 
       enable = true;
       previews = {
         web = {
           command = [
-            "python3"]
+            "python3"
             "-m"
-            "streamlit";
-            "run"=
-            "app.py";
-            "--server.port"=
-            "$PORT";
-            "--server.address"=
-            "0.0.0.0";
-            "--server.enableCORS"=
-            "false";
-          };
+            "streamlit"
+            "run"
+            "app.py"
+            "--server.port"
+            "$PORT"
+            "--server.address"
+            "0.0.0.0"
+            "--server.enableCORS"
+            "false"
+          ];
           manager = "web";
         };
       };
     };
-
-    # Workspace lifecycle hooks
-    workspace = {
-      onCreate = {}; 
-      onStart = {}; 
-    };
   };
 }
+
