@@ -1,45 +1,37 @@
-# To learn more about how to use Nix to configure your environment
-# see: https://firebase.google.com/docs/studio/customize-workspace
 { pkgs, ... }: {
-  # Which nixpkgs channel to use.
-  channel = "stable-24.05"; # or "unstable"
+  # Let Nix handle shader compilation for Flutter
+  # hardware.opengl.enable = true;
 
-  # Use https://search.nixos.org/packages to find packages
+  # Tell Nix to use the correct C++ stdlib for Flutter
+  # NIXOS_CC_WRAPPER_TARGET_HOST_x86_64_unknown_linux_gnu = "c++";
+
+  # And to use the correct linker
+  # NIXOS_LD_WRAPPER_TARGET_HOST_x86_64_unknown_linux_gnu = "ld";
+
+  # Enter a shell with the flutter sdk available
+  channel = "stable-23.11"; # Or "unstable"
   packages = [
-    # pkgs.go
     pkgs.python311
     pkgs.python311Packages.pip
-    pkgs.python311Packages.pandas
-    pkgs.python311Packages.pytesseract
-    pkgs.python311Packages.streamlit
-    pkgs.python311Packages.reportlab
-    pkgs.tesseract5
-    # pkgs.nodejs_20
-    # pkgs.nodePackages.nodemon
+    # Pytesseract dependency
+    pkgs.tesseract
   ];
-
-  # Sets environment variables in the workspace
-  env = {};
   idx = {
-    # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
+    # Search for extensions in the VS Code Marketplace.
+    # See https://open-vsx.org/ for available extensions.
     extensions = [
-      # "vscodevim.vim"
+      "ms-python.python"
+      "ms-toolsai.jupyter"
     ];
 
     # Enable previews
     previews = {
       enable = true;
       previews = {
-        # web = {
-        #   # Example: run "npm run dev" with PORT set to IDX's defined port for previews,
-        #   # and show it in IDX's web preview panel
-        #   command = ["npm" "run" "dev"];
-        #   manager = "web";
-        #   env = {
-        #     # Environment variables to set for your server
-        #     PORT = "$PORT";
-        #   };
-        # };
+        web = {
+          command = ["streamlit", "run", "app.py", "--server.port", "$PORT", "--server.address", "0.0.0.0", "--server.enableCORS", "false"];
+          manager = "web";
+        };
       };
     };
 
@@ -48,7 +40,7 @@
       # Runs when a workspace is first created
       onCreate = {
         # Example: install JS dependencies from NPM
-        # npm-install = "npm install";
+        install-dependencies = "pip install -r requirements.txt";
       };
       # Runs when the workspace is (re)started
       onStart = {
