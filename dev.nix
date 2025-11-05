@@ -2,32 +2,37 @@
 
 pkgs.mkShell {
   buildInputs = with pkgs; [
-    # System-level dependencies needed by Python packages
-    tesseract
+    # System-level dependencies
+    tesseract5
     ffmpeg
 
-    # Python environment with packages declared directly
-    (python3.withPackages (ps: with ps; [
-      # Packages from requirements.txt
+    # Python environment with consolidated packages
+    (python311.withPackages (ps: with ps; [
+      # Core environment
+      pip
+
+      # Evidence Processing, Data Analysis & Visualization
       streamlit
       pytesseract
-      pillow
+      Pillow
       pandas
       opencv
       numpy
       python-dateutil
       tqdm
       openpyxl
-      pypdf2
+      PyPDF2
       python-docx
       moviepy
-      speechrecognition
+      SpeechRecognition
       psutil
       reportlab
       matplotlib
       seaborn
+
+      # AI and Machine Learning
       google-genai
-      scikitlearn
+      scikit-learn
       langchain
     ]))
   ];
