@@ -52,7 +52,7 @@ echo   [1] 🧠 Intelligent Processing Manager (AI-Powered Auto-Selection)
 echo.
 echo 🔄 MANUAL PROCESSING:
 echo   [2] 🔍 Enhanced Quality Processor (Advanced OCR + Quality Control)
-echo   [3] 🔐 Secure Evidence Processor (Password Protected + Export)
+echo   [3] 🔐 Secure Evidence Processor (Password Protected + Exporter)echo   [3] 🔐 Secure Evidence Processor (Password Protected + Export)
 echo   [4] 📄 Advanced Evidence Processor (Multi-Format: PDF/Video/Audio)
 echo   [5] ⚡ Batch OCR Processor (Fast Large Volume Processing)
 echo.
@@ -80,7 +80,7 @@ echo   [T] 📅 Evidence Timeline Generator (Chronological Analysis)
 echo.
 echo 🚀 QUICK ACTIONS:
 echo   [A] ⚡ Auto-Process Everything (Smart Selection + Processing)
-echo   [B] 🔍 Check System Status
+echo   [K] 🔍 Check System Status
 echo   [C] 📄 View Recent Results
 echo   [D] 🧪 Run Full System Test
 echo.
@@ -113,7 +113,7 @@ if /i "%choice%"=="P" goto PERFORMANCE_MONITOR
 if /i "%choice%"=="R" goto COURT_REPORT
 if /i "%choice%"=="T" goto TIMELINE
 if /i "%choice%"=="A" goto AUTO_PROCESS
-if /i "%choice%"=="B" goto SYSTEM_STATUS
+if /i "%choice%"=="K" goto SYSTEM_STATUS
 if /i "%choice%"=="C" goto RECENT_RESULTS
 if /i "%choice%"=="D" goto SYSTEM_TEST
 if /i "%choice%"=="M" goto MASTER_CONTROL

@@ -138,3 +138,15 @@ def main_app():
 
 if __name__ == "__main__":
     main_app()
+    # Check if running in a managed environment (like Project IDX)
+    # by looking for the PORT environment variable.
+    if "PORT" in os.environ:
+        # In a managed environment, run Streamlit with the correct server settings.
+        # This makes the app accessible from the browser.
+        # We use os.system to launch streamlit with arguments.
+        port = os.environ["PORT"]
+        command = f"streamlit run {__file__} --server.port {port} --server.address 0.0.0.0"
+        os.system(command)
+    else:
+        # Otherwise, run the app normally for local development.
+        main_app()
