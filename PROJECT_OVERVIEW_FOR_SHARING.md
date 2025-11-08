@@ -76,6 +76,19 @@ Lightning-fast processing for massive volumes (processes 1,000+ images in minute
 
 #### 6. **Smart Evidence Renamer**
 Automatically renames files with descriptive, organized names:
+    df = pd.read_csv(latest_index, on_bad_lines='skip')
+    ```
+
+4.  **Save the `streamlit_dashboard.py` file.**
+
+**After you have saved the file with this change:**
+
+*   **You do NOT need to "Rebuild Environment"** this time, as you are only changing a Python script, not the `.idx/dev.nix` configuration.
+*   Now, attempt to **launch your Streamlit dashboard using the Firebase Studio preview mechanism** we set up earlier. Click the "Preview" button or icon in your Firebase Studio interface.
+
+This change should allow your dashboard to load without encountering the `ParserError`, as `pandas` will now gracefully skip any malformed rows in your index CSV file.
+
+Once you've made this change and confirmed the dashboard is loading, we can then discuss implementing the long-term fix for data integrity in the script that *generates* the index file.
 - Before: `IMG_20241215_073422.jpg`
 - After: `ASSAULT-THREATENING-20241215-EMMA-HARPER-INCIDENT.jpg`
 
