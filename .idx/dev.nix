@@ -7,9 +7,12 @@
       
       # Use the stable python environment and load all dependencies using `withPackages`.
       # This is a more robust way to handle large groups of Python dependencies in Nix.
-      packages = [
+      packages = pkgs: with pkgs; [ # Define pkgs as an argument to the packages list
         # Core System Dependencies
-        pkgs.tesseract5
+        tesseract5 # Core System Dependencies
+        git # Version control system
+        wget # Utility for downloading files
+        unzip # Utility for extracting zip archives
         
         # All Python Packages (consolidated)
         (pkgs.python311Packages.pip (python-pkgs: with python-pkgs; [
@@ -68,7 +71,6 @@
           "mutable-ai.mutable-ai"
           "njpwerner.autodocstring"
           "vitest.explorer"
-          "pkgs.python311Packages.pip"
         ];
         
         # Enable previews

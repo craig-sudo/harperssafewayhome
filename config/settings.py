@@ -1,38 +1,49 @@
-
 # config/settings.py
 
-# Tesseract OCR configuration
-tesseract_config = "--psm 6"
-min_ocr_confidence = 80
-tesseract_cmd = None  # Set to your Tesseract path if not in system PATH, e.g., r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+# ============================================================================
+# TESSERACT OCR CONFIGURATION
+# ============================================================================
 
-# File extensions to process
-image_extensions = ['.png', '.jpg', '.jpeg', '.bmp', '.tiff']
+# Path to Tesseract executable (Required for Windows)
+tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
-# Relevance codes for content categorization
+# Tesseract configuration string
+tesseract_config = '--oem 3 --psm 6 -l eng' 
+
+# Minimum OCR confidence score required for 'SUCCESS' status
+min_ocr_confidence = 70.0 
+
+# ============================================================================
+# IMAGE PREPROCESSING SETTINGS
+# ============================================================================
+use_binary_threshold = True
+binary_threshold = 130 
+
+# ============================================================================
+# LEGAL CATEGORIES (Used by secure_evidence_processor.py)
+# ============================================================================
+
 relevance_codes = {
-    'CRIMINAL_CONDUCT': ['drug', 'illegal', 'stole', 'theft'],
-    'ENDANGERMENT': ['danger', 'unsafe', 'neglect', 'abuse'],
-    'NON_COMPLIANCE': ['court order', 'custody agreement', 'violation'],
-    'FINANCIAL_IMPACT': ['rent', 'bill', 'pay', 'money'],
-    'USER_COMMITMENT': ['promise', 'agree', 'commit'],
-    'COMMUNICATION': ['text', 'message', 'email', 'call'],
+    'CRIMINAL_CONDUCT': ['assault', 'police', 'court', 'december 9', 'charged'],
+    'ENDANGERMENT': ['sick', 'doctor', 'injury', 'danger', 'harper', 'welfare'],
+    'NON_COMPLIANCE': ['blocked', 'refused', 'contempt', 'custody violation'],
+    'SUBSTANCE_ABUSE': ['meth', 'drug', 'cocaine', 'pills', 'substance', 'alcohol'],
+    'FINANCIAL_ISSUE': ['money', 'support', 'payment', 'bank', 'owe', 'rent'],
     'REVIEW_REQUIRED': []
 }
 
-# CSV fields for the output file
-csv_fields = [
-    'File_Name',
-    'File_Integrity_Hash',
-    'Date_Time_Approx',
-    'Sender',
-    'Recipient',
-    'Key_Factual_Statement',
-    'Relevance_Code',
-    'Processing_Status',
-    'Confidence_Score',
-    'Legal_Priority',
-    'File_Size_Bytes',
-    'Processing_Session',
-    'Processed_DateTime'
-]
+priority_weights = {
+    'CRIMINAL_CONDUCT': 10, 
+    'ENDANGERMENT': 9, 
+    'SUBSTANCE_ABUSE': 8,
+    'NON_COMPLIANCE': 7,
+    'FINANCIAL_ISSUE': 5,
+    'REVIEW_REQUIRED': 1
+}
+
+# ============================================================================
+# FILE PROCESSING SETTINGS
+# ============================================================================
+image_extensions = ['.png', '.jpg', '.jpeg', '.bmp', '.tiff']
+multimedia_extensions = ['.pdf', '.mp4', '.mov', '.mp3', '.wav', '.docx']
+output_encoding = 'utf-8'

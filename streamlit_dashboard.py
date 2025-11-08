@@ -116,7 +116,7 @@ if page == "🏠 Dashboard":
     if exhibit_index_files:
         # Load the most recent exhibit index
         latest_index = max(exhibit_index_files, key=lambda p: p.stat().st_mtime)
-            df = pd.read_csv(latest_index))
+        df = pd.read_csv(latest_index)
         
         # Top metrics
         col1, col2, col3, col4 = st.columns(4)
