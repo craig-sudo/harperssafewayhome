@@ -1,0 +1,74 @@
+[debug] [2025-11-08T11:05:02.501Z] ----------------------------------------------------------------------
+[debug] [2025-11-08T11:05:02.508Z] Command:       /nix/store/ws50yvm6vzlzf7jzz6n7xh4szddrack1-nodejs-20.19.1/bin/node /nix/store/f77kilzcw5hh2gidh22k6pj8cp7pxp7h-firebase-tools-14.22.0/lib/node_modules/firebase-tools/lib/bin/firebase.js init hosting
+[debug] [2025-11-08T11:05:02.510Z] CLI Version:   14.22.0
+[debug] [2025-11-08T11:05:02.511Z] Platform:      linux
+[debug] [2025-11-08T11:05:02.511Z] Node Version:  v20.19.1
+[debug] [2025-11-08T11:05:02.512Z] Time:          Sat Nov 08 2025 11:05:02 GMT+0000 (Coordinated Universal Time)
+[debug] [2025-11-08T11:05:02.512Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-11-08T11:05:02.525Z] Checked if tokens are valid: false, expires at: 1762385449948
+[debug] [2025-11-08T11:05:02.526Z] Checked if tokens are valid: false, expires at: 1762385449948
+[debug] [2025-11-08T11:05:02.527Z] > refreshing access token with scopes: []
+[debug] [2025-11-08T11:05:02.532Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-08T11:05:02.532Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-08T11:05:02.724Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-11-08T11:05:02.725Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[error] Failed to fetch Firebase Project from current Studio Workspace: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/user/harperssafewayhome
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] 
+[debug] [2025-11-08T11:05:02.734Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-08T11:05:02.736Z] > authorizing via signed-in user (craig@paulroofs.com)
+[debug] [2025-11-08T11:05:02.737Z] Checked if tokens are valid: false, expires at: 1762385449948
+[debug] [2025-11-08T11:05:02.737Z] Checked if tokens are valid: false, expires at: 1762385449948
+[debug] [2025-11-08T11:05:02.737Z] > refreshing access token with scopes: []
+[debug] [2025-11-08T11:05:02.739Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-08T11:05:02.739Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-08T11:05:02.809Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-11-08T11:05:02.809Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2025-11-08T11:05:02.812Z] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2025-11-08T11:05:02.882Z] FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+    at invalidCredentialError (/nix/store/f77kilzcw5hh2gidh22k6pj8cp7pxp7h-firebase-tools-14.22.0/lib/node_modules/firebase-tools/lib/auth.js:167:12)
+    at refreshTokens (/nix/store/f77kilzcw5hh2gidh22k6pj8cp7pxp7h-firebase-tools-14.22.0/lib/node_modules/firebase-tools/lib/auth.js:591:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getAccessToken (/nix/store/f77kilzcw5hh2gidh22k6pj8cp7pxp7h-firebase-tools-14.22.0/lib/node_modules/firebase-tools/lib/apiv2.js:42:18)
+    at async Client.addAuthHeader (/nix/store/f77kilzcw5hh2gidh22k6pj8cp7pxp7h-firebase-tools-14.22.0/lib/node_modules/firebase-tools/lib/apiv2.js:169:21)
+    at async Client.request (/nix/store/f77kilzcw5hh2gidh22k6pj8cp7pxp7h-firebase-tools-14.22.0/lib/node_modules/firebase-tools/lib/apiv2.js:120:34)
+    at async getFirebaseProject (/nix/store/f77kilzcw5hh2gidh22k6pj8cp7pxp7h-firebase-tools-14.22.0/lib/node_modules/firebase-tools/lib/management/projects.js:357:21)
+    at async usingProject (/nix/store/f77kilzcw5hh2gidh22k6pj8cp7pxp7h-firebase-tools-14.22.0/lib/node_modules/firebase-tools/lib/init/features/project.js:79:16)
+    at async Object.doSetup (/nix/store/f77kilzcw5hh2gidh22k6pj8cp7pxp7h-firebase-tools-14.22.0/lib/node_modules/firebase-tools/lib/init/features/project.js:30:9)
+    at async init (/nix/store/f77kilzcw5hh2gidh22k6pj8cp7pxp7h-firebase-tools-14.22.0/lib/node_modules/firebase-tools/lib/init/index.js:77:13)
+[error] 
+[error] Error: Failed to get Firebase project harperssafewayhome-34882-264d6. Please make sure the project exists and your account has permission to access it.

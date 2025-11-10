@@ -1,0 +1,26 @@
+HARPER'S EVIDENCE SMART RENAMING REPORT
+Case: FDSJ-739-24
+Generated: 2025-10-23 18:15:56
+============================================================
+
+PROCESSING SUMMARY:
+Total files processed: 7472
+Successfully renamed: 7472
+Success rate: 100.0%
+
+CATEGORY BREAKDOWN:
+  general: 5228 files
+  threatening: 612 files
+  health_medical: 484 files
+  financial: 440 files
+  legal_court: 432 files
+  december_9_incident: 232 files
+  custody_violation: 28 files
+  school_issues: 16 files
+
+PEOPLE IDENTIFIED:
+  emma_ryan: 4336 files
+  harper: 1328 files
+  matt_ryan: 692 files
+  tony_baker: 416 files
+  cole_brook: 76 files

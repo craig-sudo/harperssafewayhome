@@ -1,0 +1,17 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/placedsj/harperssafewayhome.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[user]
+	email = placed.sj@gmail.com
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+	vscode-merge-base = origin/main
+	gk-merge-base = origin/main
